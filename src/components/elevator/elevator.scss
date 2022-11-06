@@ -1,0 +1,15 @@
+.elevator {
+  margin-right: 12px;
+  border: 1px solid gray;
+  padding: 5px;
+  position: absolute;
+  transition: all 1s ease-in-out;
+
+  .arrived {
+    stroke: green;
+  }
+
+  .busy {
+    stroke: red;
+  }
+}

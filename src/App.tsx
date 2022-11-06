@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import SetupPage from "./features/setup-page/setup-page";
+import Building from "./features/building/building";
+import {ElevatorsDataProvider, useElevators} from "./hooks/use-elevators";
+import 'antd/dist/antd.min.css';
+import "./App.scss";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const {setUserPreference, floorsNumber, elevators, elevatorsQueue, findElevator, setElevatorAvailable, appIsReady} = useElevators();
+
+    return (
+        <div className='App'>
+            <ElevatorsDataProvider value={{
+                setUserPreference,
+                floorsNumber,
+                elevators,
+                elevatorsQueue,
+                findElevator,
+                setElevatorAvailable,
+            }}>
+                <div className='main'>
+                    {!appIsReady && <SetupPage/>}
+                </div>
+                {appIsReady && <Building/>}
+            </ElevatorsDataProvider>
+        </div>
+    );
 }
 
 export default App;

@@ -1,0 +1,16 @@
+.building-ctr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .building {
+    position: relative;
+    display: flex;
+  }
+
+  .column-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+
